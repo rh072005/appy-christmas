@@ -1,8 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Tools and Addins
 ///////////////////////////////////////////////////////////////////////////////
-#tool "GitVersion.CommandLine"
-#addin nuget:?package=Cake.Git
 #addin nuget:?package=Cake.Figlet
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11,10 +9,6 @@
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
-var versionType = Argument("VersionType", "patch");
-var artifacts = MakeAbsolute(Directory(Argument("artifactPath", "./artifacts")));
-
-GitVersion versionInfo = null;
 
 ///////////////////////////////////////////////////////////////////////////////
 // SETUP / TEARDOWN
@@ -23,7 +17,7 @@ GitVersion versionInfo = null;
 Setup(ctx =>
 {
 	// Executed BEFORE the first task.
-	Information(Figlet("Tribble Cake"));
+	Information(Figlet("Appy Christmas"));
 });
 
 Teardown(ctx =>
@@ -33,77 +27,45 @@ Teardown(ctx =>
 });
 
 ///////////////////////////////////////////////////////////////////////////////
-// SYSTEM TASKS
-///////////////////////////////////////////////////////////////////////////////
-
-Task("Version")
-	.Does(() =>
-	{
-		var semVersion = "";
-		int major = 0;
-		int minor = 1;
-		int patch = 0;
-		GitVersion assertedVersions = GitVersion(new GitVersionSettings
-		{
-			OutputType = GitVersionOutput.Json,
-		});
-		major = assertedVersions.Major;
-		minor = assertedVersions.Minor;
-		patch = assertedVersions.Patch;
-		switch (versionType.ToLower())
-		{
-			case "patch":
-				patch += 1; break;
-			case "minor":
-				minor += 1; patch = 0; break;
-			case "major":
-				major += 1;	minor = 0; patch = 0; break;			
-		};
-		semVersion = string.Format("{0}.{1}.{2}", major, minor, patch);
-		GitTag(".", semVersion);
-		Information("Changing version: {0} to {1}", assertedVersions.LegacySemVerPadded, semVersion);
-	});
-
-///////////////////////////////////////////////////////////////////////////////
 // USER TASKS
-// PUT ALL YOUR BUILD GOODNESS IN HERE
 ///////////////////////////////////////////////////////////////////////////////
 
 Task("Clean")
-    .Does(() =>
-	{
-		CleanDirectory(artifacts);
-	});
+    .Does(ctx => {
+        CleanDirectories("./src/**/bin/" + configuration);
+        CleanDirectories("./src/**/obj/" + configuration);
+        CleanDirectories("./artifacts");
+});
 
-Task("Default")
+Task("Restore")
     .IsDependentOn("Clean")
-    .Does(() => 
-	{
-		Information("Hello Cake!");
-	});
+    .Does(ctx => {
+        DotNetCoreRestore("./", new DotNetCoreRestoreSettings {
+            Sources = new [] { "https://api.nuget.org/v3/index.json" },
+            Verbosity = DotNetCoreRestoreVerbosity.Warning
+        });
+});
 
 Task("Build")
-	.Does(() =>
-	{
-		Information("Running Build...");
-		// Add your build tasks here
-		// this task can depend on others :)
-	});
+    .IsDependentOn("Restore")
+    .Does(ctx => {
+        var projects = GetFiles("./**/project.json");
+        foreach(var project in projects)
+        {
+            DotNetCoreBuild(project.GetDirectory().FullPath, new DotNetCoreBuildSettings {
+                Configuration = configuration
+            });
+        }
+});
 
-Task("Test")
-	.Does(() =>
-	{
-		Information("Running Tests...");
-		// Add your test tasks here
-		// this task can depend on others :)
-	});
+Task("Run")
+    .IsDependentOn("Build")
+    .Does(() =>
+{
+    DotNetCoreRun("./src/ProductApi");
+});
 
-Task("Package")
-	.Does(() =>
-	{
-		Information("Running Packaging...");
-		// Add your packaging tasks here
-		// this task can depend on others :)
-	});
+Task("Default")
+	.IsDependentOn("Run");
 
 RunTarget(target);

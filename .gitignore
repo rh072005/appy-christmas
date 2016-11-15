@@ -250,3 +250,10 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+tools/Cake/
+tools/nuget.exe
+tools/gitreleasemanager/
+tools/GitVersion.CommandLine/
+tools/Addins/
+tools/packages.config.md5sum
