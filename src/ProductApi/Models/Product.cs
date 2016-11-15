@@ -7,7 +7,7 @@ namespace WebApplication.Models
         public string Description { get; set; }
         public string Manufacturer { get; set; }
         public string Model { get; set; }
-        public long NetPrice { get; set; }
-        public long GrossPrice { get; set; }
+        public double NetPrice { get; set; }
+        public double GrossPrice { get; set; }
     }
 }

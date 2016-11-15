@@ -8,7 +8,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 var target = Argument("target", "Default");
-var configuration = Argument("configuration", "Release");
+var configuration = Argument("configuration", "Debug");
 
 ///////////////////////////////////////////////////////////////////////////////
 // SETUP / TEARDOWN
@@ -34,7 +34,6 @@ Task("Clean")
     .Does(ctx => {
         CleanDirectories("./src/**/bin/" + configuration);
         CleanDirectories("./src/**/obj/" + configuration);
-        CleanDirectories("./artifacts");
 });
 
 Task("Restore")
