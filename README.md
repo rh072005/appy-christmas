@@ -17,7 +17,7 @@ There are included assets to get you started but you can supplement these if you
 ## The Backend API
 Running `cake` from the commandline will build and spin up a simple aspnet core api with the following endpoints
  * `http://localhost:5000/api/products/` - this will return a list of products
- * `http://localhost:5000/api/products/{id}/` - this will return the product with the id of x
+ * `http://localhost:5000/api/products/{x}/` - this will return the product with the id of x (zero based remember!)
  * `http://localhost:5000/swagger/ui/index.html`  - a swagger ui page allowing you to test the api.
 
 The product list is just hard coded into the `getProducts()` method  
@@ -38,3 +38,6 @@ If you want something that is DB backed then try the entityframework branch
  - Angular
  - jQeury Mobile
  - DOJO
+
+## license
+MIT © [Richard Cooper](https://richardcooper.mit-license.org/)
