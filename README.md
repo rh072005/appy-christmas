@@ -5,7 +5,10 @@ Mobile App Development Challange
 1. Fork this repository and clone a local copy
 2. Run cake.cmd to build and start the backend api 
 3. Pick one of the technologies from below
-4. Write a simple app that calls the backend api and displays the information sent back
+4. Write a simple app that calls the backend api and displays the information sent back - it should contain the following pages:
+  * Branded "Loading" page
+  * Product List page
+  * Product detail page
 5. Work out how to test the app
 6. Write up the learnings, pros\cons, license costs etc.
 
