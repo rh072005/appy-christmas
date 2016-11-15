@@ -10,7 +10,6 @@ namespace ProductApi.Controllers
     [Route("api/[controller]")]
     public class ProductsController : Controller
     {
-        // GET api/values
         [HttpGet]
         public IEnumerable<Product> Get()
         {
@@ -21,7 +20,6 @@ namespace ProductApi.Controllers
             };
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
         public Product Get(int id)
         {
