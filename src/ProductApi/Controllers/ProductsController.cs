@@ -30,7 +30,8 @@ namespace ProductApi.Controllers
               Manufacturer = "Deadpool Toys Ltd.",
               Model = "Pinkie",
               NetPrice = 0.12,
-              GrossPrice = 39.99  
+              GrossPrice = 39.99 ,
+              ImageUrl = "images/unicorn.jpg"
             };
         }
     }

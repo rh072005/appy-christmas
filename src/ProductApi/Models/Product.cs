@@ -9,5 +9,6 @@ namespace WebApplication.Models
         public string Model { get; set; }
         public double NetPrice { get; set; }
         public double GrossPrice { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
