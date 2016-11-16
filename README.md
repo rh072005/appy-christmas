@@ -22,6 +22,8 @@ Running `cake` from the commandline will build and spin up a simple aspnet core 
  * `http://localhost:5000/api/products/{x}/` - this will return the product with the id of x (zero based remember!)
  * `http://localhost:5000/swagger/ui/index.html`  - a swagger ui page allowing you to test the api.
 
+**You will probably need to install the [ASP.NET Core 1.1 SDK](https://blogs.msdn.microsoft.com/webdev/2016/10/25/announcing-asp-net-core-1-1-preview-1/) to be able to run this.**
+
 The product list is just hard coded into the `getProducts()` method  
 If you want something that is DB backed then try the entityframework branch
 
