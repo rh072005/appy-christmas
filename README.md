@@ -27,6 +27,8 @@ Running `cake` from the commandline will build and spin up a simple aspnet core 
 The product list is just hard coded into the `getProducts()` method  
 If you want something that is DB backed then try the entityframework branch
 
+The public URL for this API is http://appychristmas.azurewebsites.net/api/products/ with the swagger endpoint available here http://appychristmas.azurewebsites.net/swagger/ui/index.html
+
 ## The Technologies
 ### Cross Platform 
  - Ionic
