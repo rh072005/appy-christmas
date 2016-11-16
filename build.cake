@@ -57,15 +57,26 @@ Task("Build")
         }
 });
 
+Task("Publish")
+    .IsDependentOn("Build")
+    .Does(ctx => {
+        var settings = new DotNetCorePublishSettings
+        {
+            Framework = "netcoreapp1.0",
+            Configuration = "Release",
+            OutputDirectory = "./artifacts/"
+        };
+        DotNetCorePublish("./src/ProductApi/project.json", settings);
+});
+
 Task("Run")
     .IsDependentOn("Build")
-    .Does(() =>
-{
-    DotNetCoreRun("./src/ProductApi");
+    .Does(() => {
+        DotNetCoreRun("./src/ProductApi");
 });
 
 Task("AppVeyor")
-    .IsDependentOn("Build");
+    .IsDependentOn("Publish");
 
 Task("Default")
 	.IsDependentOn("Run");
