@@ -39,9 +39,8 @@ Task("Clean")
 Task("Restore")
     .IsDependentOn("Clean")
     .Does(ctx => {
-        DotNetCoreRestore("./", new DotNetCoreRestoreSettings {
-            Sources = new [] { "https://api.nuget.org/v3/index.json" },
-            Verbosity = DotNetCoreRestoreVerbosity.Warning
+        DotNetCoreRestore("./src/ProductApi/project.json", new DotNetCoreRestoreSettings {
+            Sources = new [] { "https://api.nuget.org/v3/index.json" }
         });
 });
 
@@ -62,7 +61,7 @@ Task("Publish")
     .Does(ctx => {
         var settings = new DotNetCorePublishSettings
         {
-            Framework = "netcoreapp1.0",
+            Framework = "netcoreapp1.1",
             Configuration = "Release",
             OutputDirectory = "./artifacts/"
         };
