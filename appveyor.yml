@@ -2,7 +2,7 @@
 environment:
   website_name: appychristmas
   website_psw:
-    secure: zTHSWn+iE4RfNYHExaZxBEEoOrcu40MUtZKOV704vHlRuBCHfNa7iE0G9l6nriCprhHEuUddb733Qgpb56V6Tw==
+    secure: AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA024zePPvCk66gydYIQs9yAAAAAACAAAAAAADZgAAwAAAABAAAABdO1V9SSQQoMCGl1OpJVRyAAAAAASAAACgAAAAEAAAAJ4ui3RwZcBdTj0PJ9x7+M2AAAAAWJkbhdNVRaoOtsVVGo4GOt1r2wT4ddwXk6YdbrWX/UOjzx/S3nEgYKj8pajR7TbMwRYWo1xyTYciJcri/XQWuxsqY59uQGQHmKQnFoB+aagaAoKcT7dKx3I0P+iU7O9C1obZizpP5TAXC+4mPyI9VxCSGfSFC+vOdrhcZe8JFEgUAAAAi1xSyetshcwiMGM/VaPFRCyL0+U=
 
 init:
   - git config --global core.autocrlf true
