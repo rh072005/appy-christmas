@@ -31,3 +31,14 @@ cache:
 artifacts:
 - path: artifacts
   name: appychristmas
+
+deploy:
+- provider: WebDeploy
+  server: appychristmas.scm.azurewebsites.net
+  website: appychristmas
+  username: appychristmas
+  password:
+    secure: JXyS0koUzq65E8PsjSjdKw==
+  artifact: appychristmas
+  aspnet_core: true
+  aspnet_core_force_restart: true
