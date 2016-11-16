@@ -1,5 +1,7 @@
 # Appy Christmas
 
+[![Build status](https://ci.appveyor.com/api/projects/status/psapnvypec32jwm1/branch/master?svg=true)](https://ci.appveyor.com/project/frozenskys/appy-christmas/branch/master)
+
 Mobile App Development Challange 
 
 1. Fork this repository and clone a local copy
