@@ -65,7 +65,7 @@ Task("Run")
 });
 
 Task("AppVeyor")
-    .IsDependentOn("Build")
+    .IsDependentOn("Build");
 
 Task("Default")
 	.IsDependentOn("Run");
