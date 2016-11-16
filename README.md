@@ -34,14 +34,16 @@ If you want something that is DB backed then try the entityframework branch
  - Cordova
  
 ### Platform Specific
- - iOS
- - Android
  - UWP
 
 ### WebApp Based
  - Angular
- - jQeury Mobile
  - DOJO
 
-## license
+### Less Interesting
+ - iOS
+ - Android
+ - jQuery Mobile
+ 
+## License
 MIT © [Richard Cooper](https://richardcooper.mit-license.org/)
