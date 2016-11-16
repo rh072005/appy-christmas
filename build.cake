@@ -64,6 +64,9 @@ Task("Run")
     DotNetCoreRun("./src/ProductApi");
 });
 
+Task("AppVeyor")
+    .IsDependentOn("Build")
+
 Task("Default")
 	.IsDependentOn("Run");
 
