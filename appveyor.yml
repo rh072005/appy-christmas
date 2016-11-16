@@ -1,4 +1,9 @@
 # Build script
+environment:
+  website_name: appychristmas
+  website_psw:
+    secure: zTHSWn+iE4RfNYHExaZxBEEoOrcu40MUtZKOV704vHlRuBCHfNa7iE0G9l6nriCprhHEuUddb733Qgpb56V6Tw==
+
 init:
   - git config --global core.autocrlf true
 
@@ -22,3 +27,6 @@ branches:
 # Build cache
 cache:
 - tools -> build.cake
+
+deploy_script:
+- '"C:\Program Files (x86)\IIS\Microsoft Web Deploy V3\msdeploy.exe" -source:IisApp=''%appveyor_build_folder%\artifacts'' -dest:IisApp=''%website_name%'',ComputerName=''https://%website_name%.scm.azurewebsites.net/msdeploy.axd'',UserName=''$%website_name%'',Password=''%website_psw%'',IncludeAcls=''False'',AuthType=''Basic'' -verb:sync -enablerule:AppOffline -enableRule:DoNotDeleteRule -retryAttempts:2'
