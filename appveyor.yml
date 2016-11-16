@@ -28,5 +28,9 @@ branches:
 cache:
 - tools -> build.cake
 
+artifacts:
+- path: artifacts
+  name: appychristmas
+
 deploy_script:
 - '"C:\Program Files (x86)\IIS\Microsoft Web Deploy V3\msdeploy.exe" -source:IisApp=''%appveyor_build_folder%\artifacts'' -dest:IisApp=''%website_name%'',ComputerName=''https://%website_name%.scm.azurewebsites.net/msdeploy.axd'',UserName=''$%website_name%'',Password=''%website_psw%'',IncludeAcls=''False'',AuthType=''Basic'' -verb:sync -enablerule:AppOffline -enableRule:DoNotDeleteRule -retryAttempts:2'
