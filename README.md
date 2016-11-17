@@ -1,6 +1,6 @@
 # Appy Christmas
 
-[![Build status](https://ci.appveyor.com/api/projects/status/psapnvypec32jwm1/branch/master?svg=true)](https://ci.appveyor.com/project/frozenskys/appy-christmas/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/uw7tk2r317see61a/branch/master?svg=true)](https://ci.appveyor.com/project/rh072005/appy-christmas/branch/master)
 
 Mobile App Development Challange 
 
