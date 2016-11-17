@@ -32,3 +32,15 @@ cache:
 artifacts:
 - path: artifacts
   name: appychristmas
+ 
+deploy:
+  - provider: WebDeploy
+    server: https://appychristmasfork.scm.azurewebsites.net:443/msdeploy.axd?site=appychristmasfork
+    website: appychristmasfork
+    username: $appychristmasfork
+    password:
+      secure: 5Orq1J3LNhCmkcpwzVuHZqLo+uhgWt3NULq3Ezz2hRO/4OfLQ9mD/E5cbAo8ceHcJe8q64mBiymdw23SqWWu3g==
+    remove_files: true
+    app_offline: true
+    artifact: appychristmas
+  
