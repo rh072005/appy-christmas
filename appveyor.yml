@@ -23,6 +23,7 @@ branches:
     - /r/.*/
     - /release/.*/
     - /hotfix/.*/
+    - netcore11
 
 # Build cache
 cache:
