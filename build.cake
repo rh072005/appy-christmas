@@ -39,7 +39,7 @@ Task("Clean")
 Task("Restore")
     .IsDependentOn("Clean")
     .Does(ctx => {
-        DotNetCoreRestore("./src/ProductApi/project.json", new DotNetCoreRestoreSettings {
+        DotNetCoreRestore("./src/ProductApi/ProductApi.csproj", new DotNetCoreRestoreSettings {
             Sources = new [] { "https://api.nuget.org/v3/index.json" }
         });
 });
@@ -47,13 +47,10 @@ Task("Restore")
 Task("Build")
     .IsDependentOn("Restore")
     .Does(ctx => {
-        var projects = GetFiles("./**/project.json");
-        foreach(var project in projects)
-        {
-            DotNetCoreBuild(project.GetDirectory().FullPath, new DotNetCoreBuildSettings {
-                Configuration = configuration
-            });
-        }
+        DotNetCoreBuild("./src/ProductApi/ProductApi.csproj", new DotNetCoreBuildSettings {
+            Framework = "netcoreapp1.1",
+            Configuration = configuration
+        });
 });
 
 Task("Publish")
@@ -65,13 +62,13 @@ Task("Publish")
             Configuration = "Release",
             OutputDirectory = "./artifacts/"
         };
-        DotNetCorePublish("./src/ProductApi/project.json", settings);
+        DotNetCorePublish("./src/", settings);
 });
 
 Task("Run")
     .IsDependentOn("Build")
     .Does(() => {
-        DotNetCoreRun("./src/ProductApi");
+        DotNetCoreRun("./src/ProductApi/ProductApi.csproj");
 });
 
 Task("AppVeyor")

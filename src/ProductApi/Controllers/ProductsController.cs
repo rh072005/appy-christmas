@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using WebApplication.Models;
-
-namespace ProductApi.Controllers
+﻿namespace ProductApi.Controllers
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.AspNetCore.Mvc;
+    using ProductApi.Models;
+
     [Route("api/[controller]")]
     public class ProductsController : Controller
     {
@@ -24,7 +22,7 @@ namespace ProductApi.Controllers
 
         private IEnumerable<Product> getProducts()
         {
-            return new Product[] { 
+            return new Product[] {
                 new Product {
                     Name = "Unicorn",
                     Type = "Toy",
